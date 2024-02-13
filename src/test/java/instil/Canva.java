@@ -41,10 +41,22 @@ public class Canva {
                 driver.findElement(By.id(":r1r:"))
                 .sendKeys("instill@puabook.com");
 
-
                 // Click on the "continue" button
                 driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div[2]/form/div[2]/button"))
                 .click();
+
+
+
+                 // Fill in the Name 
+                driver.findElement(By.id(":ra:"))
+                .sendKeys("instill");
+
+                // Click on the "create your account" button
+                driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div[2]/form/button"))
+                .click();
+
+
+                    
 
                 WebElement passwordField = driver.findElement(By.id("password"));
                 passwordField.sendKeys("your_password");
