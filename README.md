@@ -17,7 +17,7 @@ Before running the script, ensure you have the following:
     git clone https://github.com/Samzeeke/Instill-Education-TEST.git
     ```
 
-2. Navigate to the project directory: (You 
+2. Navigate to the project directory: (You will find the file Canva.java in this path src/test/java/instil)
 
     ```bash
     cd your-repo
