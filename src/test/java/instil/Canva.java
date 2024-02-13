@@ -60,7 +60,7 @@ public class Canva {
                 driver.findElement(By.id(":rv:"))
                 .sendKeys("772700");
 
-                // Click on the "create your account" button
+                // Click on the "Submit" button
                 driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/form/div[1]/button"))
                 .click();
 
