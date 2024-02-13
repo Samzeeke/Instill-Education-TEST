@@ -14,10 +14,10 @@ Before running the script, ensure you have the following:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/Samzeeke/Instill-Education-TEST.git
     ```
 
-2. Navigate to the project directory:
+2. Navigate to the project directory: (You 
 
     ```bash
     cd your-repo
