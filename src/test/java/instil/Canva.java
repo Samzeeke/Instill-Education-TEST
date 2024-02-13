@@ -46,7 +46,6 @@ public class Canva {
                 .click();
 
 
-
                  // Fill in the Name 
                 driver.findElement(By.id(":ra:"))
                 .sendKeys("instill");
@@ -56,13 +55,14 @@ public class Canva {
                 .click();
 
 
-                    
 
-                WebElement passwordField = driver.findElement(By.id("password"));
-                passwordField.sendKeys("your_password");
+                // Fill in the Code
+                driver.findElement(By.id(":rv:"))
+                .sendKeys("772700");
 
-                // Add additional form filling if needed
-
+                // Click on the "create your account" button
+                driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/form/div[1]/button"))
+                .click();
 
 
                 // Wait for the signup process to complete (you may need to add explicit waits)
