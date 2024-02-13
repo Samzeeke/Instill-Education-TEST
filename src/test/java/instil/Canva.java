@@ -41,14 +41,17 @@ public class Canva {
                 driver.findElement(By.id(":r1r:"))
                 .sendKeys("instill@puabook.com");
 
+
+                // Click on the "continue" button
+                driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div[2]/form/div[2]/button"))
+                .click();
+
                 WebElement passwordField = driver.findElement(By.id("password"));
                 passwordField.sendKeys("your_password");
 
                 // Add additional form filling if needed
 
-                // Click on the "Sign up" button
-                WebElement signUpFormButton = driver.findElement(By.xpath("//button[contains(text(), 'Sign up')]"));
-                signUpFormButton.click();
+
 
                 // Wait for the signup process to complete (you may need to add explicit waits)
 
