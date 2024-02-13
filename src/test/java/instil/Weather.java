@@ -1,50 +1,34 @@
-package instil;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
+import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertTrue;
 
-    public class OpenWeatherUITest {
+public class OpenWeatherAPITest {
 
-        @Test
-        public void validateWeatherIsSunny() {
-            // Set the OpenWeatherMap credentials and location
-            String username = "your_openweathermap_username";
-            String password = "your_openweathermap_password";
-            String location = "your_location";
+    private static final String API_KEY = "e5f0cd6991ef5e9b509daf65bf50362f";
+    private static final String ENDPOINT = "https://api.openweathermap.org/data/3.0/onecall";
 
-            // Set up the WebDriver (assuming ChromeDriver is used)
-            System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-            WebDriver driver = new ChromeDriver();
+    @Test
+    public void validateWeatherIsSunnyInLagos() {
+        // Set the latitude and longitude for Lagos, Nigeria
+        double lagosLatitude = 6.524379;
+        double lagosLongitude = 3.379206;
 
-            // Navigate to OpenWeatherMap and sign in
-            driver.get("https://openweathermap.org/");
-            WebElement signInButton = driver.findElement(By.linkText("Sign In"));
-            signInButton.click();
+        // Make the API request and capture the response
+        Response response = given()
+                .queryParam("lat", lagosLatitude)
+                .queryParam("lon", lagosLongitude)
+                .queryParam("appid", API_KEY)
+                .when()
+                .get(ENDPOINT);
 
-            WebElement usernameField = driver.findElement(By.id("user_email"));
-            WebElement passwordField = driver.findElement(By.id("user_password"));
-            WebElement signInSubmitButton = driver.findElement(By.name("commit"));
+        // Validate the response and check if the weather is sunny
+        assertTrue(response.getStatusCode() == 200, "API request failed with status code: " + response.getStatusCode());
 
-            usernameField.sendKeys(username);
-            passwordField.sendKeys(password);
-            signInSubmitButton.click();
-
-            // Navigate to the One Call 3.0 endpoint page
-            driver.get("https://openweathermap.org/api/one-call-3");
-
-            // Validate that the weather is sunny
-            assertTrue(driver.getPageSource().contains("Sunny"),
-                    "The weather is not reported as sunny on the One Call 3.0 endpoint page");
-
-            // Close the browser
-            driver.quit();
-        }
+        String weatherCondition = response.jsonPath().getString("current.weather[0].main");
+        assertTrue(weatherCondition.equalsIgnoreCase("Clear"),
+                "The weather is not sunny in Lagos. Current weather condition: " + weatherCondition);
     }
-
-
 }
