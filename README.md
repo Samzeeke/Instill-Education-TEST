@@ -13,6 +13,7 @@ Test Description:
 -If the weather is not reported as sunny, the test should fail.
 
 
+#SECTION 2
 
 # Canva SignUp Selenium Script
 
